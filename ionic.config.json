@@ -1,0 +1,7 @@
+{
+  "name": "RuemliApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
