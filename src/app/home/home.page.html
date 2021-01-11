@@ -1,20 +1,57 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header class="ion-no-border">
+  <ion-card class="headerCard">
+    <ion-card-header>
+      <ion-card-title>Rümli Checkin</ion-card-title>
+      <ion-card-subtitle>
+        <p *ngIf="persons==1">
+          Es ist {{persons}} Person im Rümli
+        </p>
+        <p *ngIf="persons>1">
+          Es sind {{persons}} Personen im Rümli
+        </p>
+        <p style="color:red;" *ngIf="persons>9">
+          Rümli ist voll
+        </p>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card *ngIf="persons<9 || persons==9" (click)="openModal()" class="valid">
+        <p>Zum Checkin</p>
+      </ion-card>
+      <ion-card *ngIf="persons>9" (click)="openModal()" class="invalid">
+        <p>Trotzem einchecken</p>
+      </ion-card>
+  </ion-card>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div *ngIf="CheckinList.length!==0">
+    <ion-card class="checkinCard" *ngFor="let item of CheckinList, ;let i=index">
+      <ion-card-header>
+        <ion-card-title *ngIf="checkinTimearray[i]<0 || checkinTimearray[i]==0">
+          <img class="imginactive"  src="../../assets/{{ item.Name | lowercase }}.png"/><p>&nbsp;&nbsp;</p>{{item.Name}} <p>&nbsp;&nbsp;(In {{checkinTimearray[i] *-1 | number:'1.0-0' }} Min.)</p>
+        </ion-card-title>
+        <ion-card-title *ngIf="checkinTimearray[i]>0" >
+          <img class="imgactive" src="../../assets/{{ item.Name | lowercase }}.png"/><p>&nbsp;&nbsp;</p>{{item.Name}} <p>&nbsp;&nbsp;(Seit {{checkinTimearray[i] | number:'1.0-0' }} Min.)</p>
+        </ion-card-title>
+        <p>Eingecheckt am: {{item.DatumUhrzeit}}</p>
+        <p *ngIf="item.Activity=='Shisha'">Ist am {{item.Activity}} rauchen</p>
+        <p *ngIf="item.Activity!=='Shisha'">Ist am {{item.Activity}}</p>
+        <p *ngIf="item.Begleitung!=='0'">Begleitung: {{item.Begleitung}} Personen</p>
+        <p *ngIf="item.Begleitung=='0'">Begleitung: Keine</p>
+      </ion-card-header>
+      <ion-card (click)="RemoveRecord(item.id)" class="subcard">
+        <p>Auschecken</p>
+      </ion-card>
+    </ion-card>
+    <!-- <div>
+    <ion-button expand="block" color="danger" (click)="RemoveAllRecords()"
+    >Alle Auschecken</ion-button
+  >
+</div> -->
+</div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="ion-padding" *ngIf="CheckinList.length==0">
+    <h2>Keine Personen im Rümli</h2>
+    <ion-img src="../../assets/logo.svg"></ion-img>
   </div>
 </ion-content>

@@ -1,0 +1,76 @@
+
+
+<ion-header class="ion-no-border">
+    <ion-button color="white" class="backbutton" (click)="dismissModal()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+  <ion-card class="headerCard">
+    <ion-card-header>
+      <ion-card-title>Checkin</ion-card-title>
+      <ion-card-subtitle>
+        <p>Bitte ausfüllen</p>
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <form [formGroup]="checkinForm" (ngSubmit)="CreateRecord()">
+
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <!-- <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" formControlName="Name" value="" okText="Okay" cancelText="Zurück">
+        <ion-select-option value="Thuva">Thuva</ion-select-option>
+        <ion-select-option value="Thaari">Thaari</ion-select-option>
+        <ion-select-option value="Api">Api</ion-select-option>
+        <ion-select-option value="Thanu">Thanu</ion-select-option>
+        <ion-select-option value="Zishan">Zishan</ion-select-option>
+        <ion-select-option value="Bejhan">Bejhan</ion-select-option>
+        <ion-select-option value="Suvi">Suvi</ion-select-option>
+        <ion-select-option value="Suki">Suki</ion-select-option>
+        <ion-select-option value="Theepa">Theepa</ion-select-option>
+      </ion-select> -->
+      <ion-input disabled="true"
+       formControlName="Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Begleitung</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" formControlName="Begleitung" value="" okText="Okay" cancelText="Zurück">
+        <ion-select-option value="0">Keine</ion-select-option>
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Datum , Uhrzeit</ion-label>
+      <ion-datetime formControlName="DatumUhrzeit" displayFormat="DD.MM.YYYY, HH:mm"></ion-datetime>
+    </ion-item>
+
+    <!-- <ion-item>
+      <ion-label position="floating">Uhrzeit</ion-label>
+      <ion-datetime formControlName="Zeit" displayFormat="HH:mm"></ion-datetime>
+    </ion-item> -->
+
+    <ion-item>
+      <ion-label position="floating">Aktivität</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" formControlName="Activity" value="" okText="Okay" cancelText="Zurück">
+        <ion-select-option value="Lernen">Lernen</ion-select-option>
+        <ion-select-option value="Shisha">Shisha</ion-select-option>
+        <ion-select-option value="Chillen">Chillen</ion-select-option>
+        <ion-select-option value="Gamen">Gamen</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="ion-padding-top">
+      <ion-button class="checkinButton" expand="block" *ngIf="checkinForm.invalid" color="danger" (click)="CreateRecord()" [disabled]="checkinForm.invalid">
+        Einchecken
+      </ion-button>
+      <ion-button class="checkinButton" expand="block" *ngIf="!checkinForm.invalid" color="success" (click)="CreateRecord()" [disabled]="checkinForm.invalid">
+        Einchecken
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

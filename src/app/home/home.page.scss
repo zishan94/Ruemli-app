@@ -1,27 +1,109 @@
-#container {
-  text-align: center;
+.headerCard {
+  box-shadow: none !important;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0px;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  .valid {
+    --background: rgb(110, 218, 128);
+    box-shadow: none !important;
+    width: 100%;
+    height: 40px;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+    }
+  }
+
+  .invalid {
+    --background: red;
+    box-shadow: none !important;
+    width: 100%;
+    height: 40px;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+    }
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.checkinCard {
+  /* fallback for old browsers */
+  --background: -webkit-linear-gradient(to right, rgb(0, 0, 0),rgb(44, 44, 44));
+  /* Chrome 10–25, Safari 5.1–6 */
+  --background: linear-gradient(to right,  rgb(0, 0, 0),rgb(44, 44, 44));
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  box-shadow: 2px 5px 15px rgb(88, 88, 88) !important;
+   
+
+  ion-card-title {
+    font-size: 25px;
+    color: white;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: bolder;
+  }
+  .subcard {
+    --background: rgb(255, 255, 255);
+    box-shadow: none !important;
+    width: 100%;
+    height: 35px;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      color: rgb(255, 0, 0);
+      font-weight: bold;
+    }
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#container a {
-  text-decoration: none;
+.imgactive {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid green;
+}
+
+
+.imginactive {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid red;
 }
